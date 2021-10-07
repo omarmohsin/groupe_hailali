@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block body%}
+
+
+<h1 class="text-center mt-5">Bienvenue sur le portail de groupe HAILALI</h1>
+<hr>
+<hr>
+<a href="{% url 'display1' %}" class="btn btn-info btn-md " role="button">Ouled Berhil</a>
+
+<div class="container">
+    <div class="row">
+        {%for semaine in list_semaines%}
+        <table class="table table-hover ">
+          <thead>
+                    <tr>
+                              <th>Id</th>
+                              <th>Nom</th>
+                              <th>base</th>
+                              <th>Lun</th>
+                              <th>Mar</th>
+                              <th>Mer</th>
+                              <th>Jeu</th>
+                              <th>Ven</th>
+                              <th>Sam</th>
+                              <th>Dim</th>
+                              <th>NBR_Jrs</th>
+                              <th>SLR_base</th>
+                              <th>Ancién</th>
+                              <th>Prime/fonc</th>
+                              <th>Salaire brut</th>
+                              <th>Cotis Cnss</th>
+                              <th>Cotis Amo</th>
+                              <th>Net_à_py</th>
+                              
+                              
+                    </tr>
+          </thead>
+          <tbody>
+                    
+                    {% for item in items %}
+                    <tr>
+                              <td>{{ item.pk }}</td>
+                              <td>{{ item.np }}</td>
+                              <td>{{ item.sdb }}</td>
+                              <td>{{ item.j1}}</td>
+                              <td>{{ item.j2 }}</td>
+                              <td>{{ item.j3 }}</td>
+                              <td>{{ item.j4}}</td>
+                              <td>{{ item.j5 }}</td>
+                              <td>{{ item.j6 }}</td>
+                              <td>{{ item.j7 }}</td>
+                              <td>{{ item.nb_j }}</td>
+                              <td>{{ item.base|floatformat:2 }}</td>
+                              <td>{{ item.ancienneté|floatformat:2 }}</td>
+                              <td>{{ item.pf }}</td>
+                              <td>{{ item.sb|floatformat:2 }}</td>
+                              <td>{{ item.cnss|floatformat:2 }}</td>
+                              <td>{{ item.amo|floatformat:2 }}</td>
+                              <td>{{ item.net_p|floatformat:2 }}</td>
+                    </tr>
+
+                    {% endfor %}
+
+          </tbody>
+</table> 
+{% endfor %}
+          </div>
+</div>
+{% endblock %}

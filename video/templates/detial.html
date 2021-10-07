@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+
+{% block body%}
+<div class="container">
+    <div class="row">
+        <hr class="" style="width:2080px;height: 86px;">
+        <div class="col-md-8 mt-6">
+            <h4 class="mt-3"><a href="{% url 'indax' %}">◄ Retour</a></h4>
+            <div class="title">{{titre}}</div>
+            <h3 class="col-md-4 mt-5">{{video.caption}}</h3>
+            <video class="embed-responsive embed-responsive-16by9" controls="controls"
+                style="height: 380px;width: 650px;">
+                <source src="{{video.video.url}}" type="video/mp4" />
+            </video>
+            <p class="col-md-4 mt-6">{{video.description}}</p>
+        </div>
+        
+        <div class="col-md-4" style="max-width: 180px;">         
+            <div class="title" style="font-size: 150%;color: darkgreen;">{{title}}</div>
+            <hr style="width: 210px;">
+            <div class="row mt-2">
+                {% for art in aer %}
+                <div class="col-md-7" >
+                    
+                           <a href="{% url 'detial' art.id %}">
+                            <video class="embed-responsive embed-responsive-16by9"
+                                style="max-width: 290px;height: 120px;">
+                            <source src="{{art.video.url}}" type="video/mp4" />
+                        </video>
+                           </a>
+                             
+                        
+                        </div>
+                    <div class="col-12 col-md-7">
+                        <a href="{% url 'detial' art.id %}">
+                            <strong>{{art.caption}}</strong> <br>
+                            
+                        </a>
+                        
+        
+                    </div>
+                    {% endfor %}
+                </div>
+        
+            </div>
+    </div>
+</div>
+
+
+{% endblock %}

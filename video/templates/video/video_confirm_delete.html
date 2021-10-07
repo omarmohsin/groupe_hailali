@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<hr class="" style="width:2080px;height: 128px;color: green;" >
+<div class="col-md-8">
+<form method="POST">
+          {%  csrf_token %}
+          
+          
+          <p class="text-center mt-5"><strong style="color: dodgerblue;font-size: 150%;"> Voulez-vous vraiment supprimer cette video  ?</strong></p>
+          <div class="center text-center">
+            <input type="submit" value="Supprimer" class="btn btn-danger  me-5">
+            <a href="{% url 'indax' %}"><h2 class="text-center mt-5">&laquo Retour</h2></a>  
+          </div>
+          
+          
+      </form>
+    </div>
+{% endblock %}

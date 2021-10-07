@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<hr class="" style="width:2080px;height: 128px;color: green;" >
+
+<div class="container">
+   
+   <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" href="{% url 'index' %}" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Main d oeuvre
+      </button>
+      <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton1" >
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'display1' %}" ><strong>Ouled berhil</strong></a></li>
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'display2' %}"><strong>Ouled drisse</strong></a></li>
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'display3' %}"><strong>Aoulouz</strong></a></li>
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'display4' %}"><strong>Mariem</strong></a></li>
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'display5' %}"><strong>Rgaigue</strong></a></li>
+      </ul>
+    </div> 
+    
+  
+         
+<div class="button-group col text-center ">          
+          
+          {% if header == "Ouled_berhils" %}
+          <a href="{% url 'export_mobile1' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+          
+          {% elif header == "Ouled_drisses" %}
+          <a href="{% url 'export_mobile2' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+          
+          {% elif header == "Aoulouzs" %}
+          <a href="{% url 'export_mobile3' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+          
+          {% elif header == "Mariems" %}
+          <a href="{% url 'export_mobile4' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+         
+          {% elif header == "Rgaigues" %}
+          <a href="{% url 'export_mobile5' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+          
+          {% endif %}
+          <hr class="" style="height: 20px; color: rgb(49, 139, 13);">
+          <h4 class=" text-center mt-2" style="color:blue">Liste des employés actifs<br >Domaine : {{ header }}</h4>
+</div>
+
+
+<table class="table table-hover mt-2 ">
+          <thead>
+                    <tr>
+                              <th>Id</th>
+                              <th>Nom</th>
+                              <th>base</th>
+                              <th>Lun</th>
+                              <th>Mar</th>
+                              <th>Mer</th>
+                              <th>Jeu</th>
+                              <th>Ven</th>
+                              <th>Sam</th>
+                              <th>Dim</th>
+                              <th>NBR_Jrs</th>
+                              <th>SLR_base</th>
+                              <th>Ancién</th>
+                              <th>Prime/fonc</th>
+                              <th>Salaire brut</th>
+                              <th>Cotis Cnss</th>
+                              <th>Cotis Amo</th>
+                              <th>Net_à_py</th>
+                              
+                              
+                    </tr>
+          </thead>
+          <tbody>
+                    {% for item in items %}
+                    <tr>
+                              <td>{{ item.pk }}</td>
+                              <td>{{ item.np }}</td>
+                              <td>{{ item.sdb }}</td>
+                              <td>{{ item.j1}}</td>
+                              <td>{{ item.j2 }}</td>
+                              <td>{{ item.j3 }}</td>
+                              <td>{{ item.j4}}</td>
+                              <td>{{ item.j5 }}</td>
+                              <td>{{ item.j6 }}</td>
+                              <td>{{ item.j7 }}</td>
+                              <td>{{ item.nb_j }}</td>
+                              <td>{{ item.base|floatformat:2 }}</td>
+                              <td>{{ item.ancienneté|floatformat:2 }}</td>
+                              <td>{{ item.pf }}</td>
+                              <td>{{ item.sb|floatformat:2 }}</td>
+                              <td>{{ item.cnss|floatformat:2 }}</td>
+                              <td>{{ item.amo|floatformat:2 }}</td>
+                              <td>{{ item.net_p|floatformat:2 }}</td>
+                              
+                              
+                              
+
+                    {% endfor %}
+
+          </tbody>
+          
+ 
+    
+</table>
+
+<hr class="" style="height: 20px; color:blue">
+<h4 class=" text-center " style="color:blue"><strong> ACHATS</strong><br><a style="color: rgb(250, 4, 4); font-size: 90%;">{{ header }}</a></h4>
+          
+
+          
+
+          <br>
+
+          <div class="button-group col text-center">
+
+                    {% if header == "Ouled_berhils" %}
+                    <a href="{% url 'export_mobile111' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+                    <a href="{% url 'ajouter-employé11' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une dépense</strong></a>
+                              
+                    {% elif header == "Ouled_drisses" %}
+                    <a href="{% url 'export_mobile222' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+                    <a href="{% url 'ajouter-employé22' %}" class="btn btn-warning mt-5" role="button"><strong>Ajouter une dépense</strong></a>
+                                        
+                    {% elif header == "Aoulouzs" %}
+                    <a href="{% url 'export_mobile333' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+                    <a href="{% url 'ajouter-employé33' %}" class="btn btn-warning mt-5" role="button"><strong>Ajouter une dépense</strong></a>
+                                        
+                    {% elif header == "Mariems" %}
+                    <a href="{% url 'export_mobile444' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+                    <a href="{% url 'ajouter-employé44' %}" class="btn btn-warning mt-5" role="button"><strong>Ajouter une dépense</strong></a>
+                                        
+                    {% elif header == "Rgaigues" %}
+                    <a href="{% url 'export_mobile555' %}" class="btn btn-info mt-5 me-5" role="button">Export</a>
+                    <a href="{% url 'ajouter-employé55' %}" class="btn btn-warning mt-5" role="button"><strong>Ajouter une dépense</strong></a>
+                                        
+                    {% endif %}
+
+          </div>
+
+          <table class="table table-hover mt-2">
+                    <thead>
+                              <tr>
+                                        <th><strong>Designation</strong></th>
+                                        <th><strong>Quantité</strong></th>
+                                        <th><strong>Prix_unité (dh)</strong></th>
+                                        <th><strong>Prix_total (dh)</strong></th>
+
+
+
+                              </tr>
+                    </thead>
+                    <tbody>
+                              {% for subject in subjects %}
+
+                              <tr>
+                                        <td><strong>{{ subject.desg }}</strong></td>
+                                        <td><strong style="color: darkblue;">{{ subject.Qté|floatformat:2 }}</strong>
+                                        </td>
+                                        <td><strong style="color: darkblue;">{{ subject.pu|floatformat:2}}</strong></td>
+                                        <td><strong style="color: darkblue;">{{ subject.pt|floatformat:2 }} dh</strong>
+                                        </td>
+
+                                        {% if header == "Ouled_berhils" %}
+                                        <td>
+                                                  <a href="{% url 'edit_desktop1' subject.pk %}" class="btn btn-warning"
+                                                            role="button">Modifier</a>
+
+                                        </td>
+                                        {% elif header == "Ouled_drisses" %}
+                                        <td>
+                                                  <a href="{% url 'edit_laptop1' subject.pk %}" class="btn btn-warning"
+                                                            role="button">Modifier</a>
+
+                                        </td>
+
+                                        {% elif header == "Aoulouzs" %}
+                                        <td>
+                                                  <a href="{% url 'edit_mobile1' subject.pk %}" class="btn btn-warning"
+                                                            role="button">Modifier</a>
+
+                                        </td>
+                                        {% elif header == "Mariems" %}
+                                        <td>
+                                                  <a href="{% url 'edit_mariem' subject.pk %}" class="btn btn-warning"
+                                                            role="button">Modifier</a>
+
+                                        </td>
+                                        {% elif header == "Rgaigues" %}
+                                        <td>
+                                                  <a href="{% url 'edit_rgaigue' subject.pk %}" class="btn btn-warning"
+                                                            role="button">Modifier</a>
+
+                                        </td>
+                                        {% endif %}
+                              </tr>
+                              {% endfor %}
+
+                    </tbody>
+          </table>
+
+
+
+</div>
+
+
+
+{% endblock %}

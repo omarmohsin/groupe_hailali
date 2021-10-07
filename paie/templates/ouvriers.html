@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<hr class="" style="width:2080px;height: 128px;color: green;" >
+
+<div class="container">
+     
+     
+     <div class="row ">
+          <div class="title">{{title}}<br> Domaines :<a style="color: rgb(0, 0, 0); font-size: 90%;">OD berhil, OD drisse, Aoulouz</a></div>
+          <hr class="mt-2">
+          <a class=" text-center mt-2" style="font-size: 200%;color: rgb(255, 2, 129);" href="{% url 'add-ouv' %}"><strong>ajouter un autre employé</strong> </a> 
+          <hr class="mt-5">
+          {% for item in items %}
+          <div class="col-12 col-md-6 mt-2  col-lg-3 col-xl-3">
+
+               <div class="card" style="background-color: rgb(253, 166, 3)">
+                    
+                    
+                    <img class="card-img-top" src={{item.image.url}} alt=" " style="height: 280px;">
+                    
+                    <h4 class="card-title text-center" style="color: rgba(10, 6, 247, 0.986);">{{item.titre}}</a></h4>
+                    
+                    <div class="card-body" style="color: rgb(4, 109, 44);background-color: rgb(189, 223, 231);">
+                    
+                    
+                    <p class="card-text mt-2" style="color:rgb(12, 8, 248)"><strong>{{item.description|linebreaks}}</strong></p>
+                    <hr class="" style="height: 28px;color:green;">
+               </div>
+
+               </div>
+          </div>
+          {% endfor %}
+          
+          
+     </div>
+     {% include "pagination.html" %}     
+
+{% endblock %}

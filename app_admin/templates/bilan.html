@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<hr class="" style="width:2080px;height: 128px;color: green;" >
+<div class="container">
+          <div class="row">
+            <hr class=""style="height: 65px;width: 2020px"  >
+              <div class="col-md-8">
+                  <h4 class="mt-5"><a href="{% url 'my-articles' %}">&laquo Retour</a></h4>
+                  <h2 class="text-center mt-2"> Detail article</h2>
+                  
+                  <img src="{{article.image.url}}" alt="" style="width: 800px; height: 580px;">
+                  <h2>{{article.title}}</h2>
+                  <p><strong>{{article.description}}</strong></p>
+              </div>
+          </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% load static %}
+<nav class="navbar navbar-expand-md navbar-danger fixed-top bg-primary me-2">
+  <div class="container-fluid ">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2">
+        <li class="nav-item ">
+          <a class="nav-link active me-5" style="color:yellow;font-size:large;" href="{% url 'home' %}"><img src="{% static 'img/home.png' %} "> ACCEUIL</a>
+        </li>
+        
+        {% if user.is_authenticated %}
+        <li class="nav-item ">
+          <a class="nav-link active me-5" style="color:yellow;font-size:large;" href="{% url 'index' %}"><img src="{% static 'img/maino.png' %}">   SERVICES
+              </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active me-5" style="color:yellow;font-size:large;" href="{% url 'indax' %}" ><img src="{% static 'img/video.jpg' %}">  VIDEOS</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active me-5" style="color:yellow;font-size:large;" href="{% url 'caisse' %}"><img src="{% static 'img/caisse.jpeg' %}">  CAISSE</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active me-5" style="color:yellow;font-size:large;" href="{% url 'display111' %}"><img src="{% static 'img/engrai.jpeg' %}">
+             FERTICIDES</a>
+        </li>
+        
+        <li class="nav-item ">
+          <a class="nav-link active me-5" style="color:yellow;font-size:large;" href="{% url 'my-articles' %}"><img src="{% static 'img/rapo.png' %} "> RAPPORTS</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active me-5" style="color:yellow;font-size:large;" href="{% url 'ouvriers' %}"><img src="{% static 'img/groupe.png' %}">
+                   OUVRIERS</a>
+        </li>
+        
+        
+        {% else %}
+        <li class="nav-item ">
+          <a class="nav-link active me-5" href="{% url 'login-blog' %}">MAIN
+            D'OEUVRE</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active me-5" href="{% url 'login-blog' %}"> 
+              </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active me-5" href="{% url 'login-blog' %}"> CAISSE</a>
+        </li>
+        
+        <li class="nav-item ">
+          <a class="nav-link active me-5" href="{% url 'login-blog' %}"> 
+            FERTICIDES</a>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link active me-5" href="{% url 'login-blog' %}"> 
+              PUBLICATION</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active me-5" href="{% url 'login-blog' %}"> 
+                   OUVRIERS</a>
+        </li>
+              {% endif %}
+         
+      </ul>
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="btn btn-info me-2">Déconnexion</a>
+      {% else %}
+      <h4 class="text-warning mt-2 me-5">   Vous n'êtes pas connectés</h4><a href="{% url 'login-blog' %}"></a>
+      
+      <a href="{% url 'login-blog' %}" class="btn btn-info me-5">Connexion</a>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <form class="d-flex" action="">
+        <input class="form-control me-2" type="search" placeholder="recherche" aria-label="Search" name="">
+        <button class="btn btn-danger" type="submit">Chercher</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</nav>

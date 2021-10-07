@@ -1,0 +1,97 @@
+{% extends 'desy/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container text-center">
+
+  <hr class="" style="height: 50px;color:rgb(3, 255, 45)">
+  <div class="title">{{title}}
+    <style>
+      .title {
+        font-family: helvetica;
+        color: rgb(236, 13, 50);
+        font-size: 50px;
+        text-align: center;
+        width: 100%;
+        text-shadow: 6px 6px 6px #74a9e6;
+        display: block;
+        font-weight: bolder;
+      }
+    </style>
+  </div>
+  <hr>
+
+  <div class="content">
+
+    <h2 class="text-center mt-2">Bienvenue</h2>
+    <h2 class="text-center mt-2">Bienvenue</h2>
+
+
+    <br>
+    <hr class="mt-5" style="color: ghostwhite;">
+  </div>
+  <div class="col text-center">
+
+    <a class="text-center mt-5" style="font-size: 150%;" href="admin/"><strong>Administration</strong> </a>
+    <br>
+    
+    <br>
+   
+  </div>
+
+
+  <div class="row">
+    <h1 class="text-center mt-5" style="font-size: 300%;color:rgba(4, 172, 32, 0.911)"><strong> Vue globale</strong>
+      </h4>
+
+  </div>
+  <div id="carouselExampleControls " class="carousel slide " data-bs-ride="carousel">
+    <div class="carousel-inner mt-5">
+      <div class="carousel-item active">
+        <img src="{% static 'img/koky.jpeg' %}  " class="d-block w-100" alt="" style="height: 420px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/citro.jpeg' %}  " class="d-block w-100" alt="" style="height: 420px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/tombo.jpeg' %}  " class="d-block w-100" alt="" style="height: 420px;">
+      </div>
+      <div class="carousel-item  ">
+        <img src="{% static 'img/climo.jpg' %}" class="d-block w-100 " alt="" style="height: 420px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/jus.jpg' %}  " class="d-block w-100" alt="" style="height: 420px;">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    {% for article in list_article %}
+    <div class="col-12 col-md-6 mt-5  col-lg-3 col-xl-3">
+
+      <div class="card">
+
+
+        <img class="card-img-top" src={{article.image.url}} alt=" " style="height: 280px;">
+
+        <h4 class="card-title text-center" style="color: rgba(10, 6, 247, 0.986);">{{article.titre}}</a></h4>
+
+        <div class="card-body" style="color: rgb(4, 109, 44);background-color: rgb(189, 223, 231);">
+
+
+          <p class="card-text mt-2" style="color:rgb(12, 8, 248)"><strong>{{article.description|linebreaks}}</strong>
+          </p>
+          <hr class="" style="height: 28px;color:green;">
+        </div>
+
+      </div>
+    </div>
+    {% endfor%}
+  </div>
+
+</div>
+
+{% endblock %}

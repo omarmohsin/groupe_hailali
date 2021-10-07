@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<hr class="" style="width:2080px;height: 128px;color: green;" >
+
+<div class="container">
+   
+   <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" href="{% url 'caisse' %}" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Gestion des caisses
+      </button>
+      <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton1" >
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'caisse1' %}" ><strong>Ouled berhil</strong></a></li>
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'caisse2' %}"><strong>Ouled drisse</strong></a></li>
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'caisse3' %}"><strong>Aoulouz</strong></a></li>
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'caisse4' %}"><strong>Mariem</strong></a></li>
+        <li><a class="dropdown-item" style="color: mediumblue;" href="{% url 'caisse5' %}"><strong>Rgaigue</strong></a></li>
+      </ul>
+    </div> 
+    
+  
+         
+<div class="button-group col text-center ">          
+          
+          {% if header == "caisse_berhils" %}
+          <a href="{% url 'export_caisse1' %}" class="btn btn-warning mt-5 me-5" role="button">Export</a>         
+          {% elif header == "caisse_drisses" %}
+          <a href="{% url 'export_caisse2' %}" class="btn btn-warning mt-5 me-5" role="button">Export</a>          
+          {% elif header == "caisse_Aoulouzs" %}
+          <a href="{% url 'export_caisse3' %}" class="btn btn-warning mt-5 me-5" role="button">Export</a>
+          {% elif header == "caisse_Mariems" %}          
+          <a href="{% url 'export_caisse4' %}" class="btn btn-warning mt-5 me-5" role="button">Export</a>         
+          {% elif header == "caisse_Rgaigues" %}
+          <a href="{% url 'export_caisse5' %}" class="btn btn-warning mt-5 me-5" role="button">Export</a>          
+          {% endif %}
+          <hr class="" style="height: 20px; color: rgb(49, 139, 13);">
+          <h4 class=" text-center mt-2" style="color:blue">Gestion du caisse<br >Domaine : {{ header }}</h4>
+</div>
+
+
+<table class="table table-hover ">
+          <thead>
+                    <tr>
+                              <th style="color: darkblue;">Id</th>
+                              <th style="color: darkblue;">Libelle</th>
+                              <th style="color: darkblue;">Recette</th>
+                              <th style="color: darkblue;">Cumul_recette</th>
+                              <th style="color: darkblue;">Depense</th>
+                              <th style="color: darkblue;">Cumul_depense</th>
+                              <th style="color: darkblue;">Solde</th>
+                    </tr>
+          </thead>
+          <tbody>
+                    {% for item in items %}
+                    <tr>
+                              <td>{{ item.pk }}</td>
+                              <td>{{ item.libelle }}</td>
+                              <td>{{ item.recette |floatformat:2}}</td>
+                              <td>{{ item.cumul_recette|floatformat:2}}</td>
+                              <td>{{ item.depense |floatformat:2}}</td>
+                              <td>{{ item.cumul_depense|floatformat:2 }}</td>
+                              <td>{{ item.solde|floatformat:2}}</td>
+                              
+                             
+                    </tr>
+                    {% endfor %}
+          
+          </tbody>  
+</table>
+
+
+
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<br>
+<hr class="" style="width:2080px;height: 120px;">
+
+
+<div class="container">
+          
+          <h2 class="text-center text-danger "><strong> Groupe HAILALI<br>Bienvenue sur notre portail</strong> </h2>
+          <hr class="text-center text-danger " style="height: 20px;">
+<br>
+<div class="button-group ">
+          <a href="{% url 'display11' %}" class="btn btn-info btn-warning" role="button">Achats <br>Ouled Berhil</a>
+          <a href="{% url 'ajouter-employé11' %}" class="text me-5 text-danger" role="button"><strong>Ajouter une
+                              dépense</strong></a>
+
+          <a href="{% url 'display22' %}" class="btn btn-info btn-warning" role="button">Achats <br>Ouled Driss</a>
+          <a href="{% url 'ajouter-employé22' %}" class="text me-5 text-danger" role="button"><strong>Ajouter une
+                              dépense</strong></a>
+
+          <a href="{% url 'display33' %}" class="btn btn-info btn-warning" role="button">Achats <br>Aoulouz</a>
+          <a href="{% url 'ajouter-employé33' %}" class="text me-5 text-danger" role="button"><strong>Ajouter une
+                              dépense</strong></a>
+
+          <hr class="" style="height: 20px; color: rgb(49, 139, 13);">
+
+</div>
+<br>
+<h4 class=" text-center " style="color:blue"><strong>MAIN D OUEVRE + ACHATS</strong><br>{{ header }}</h4>
+<hr class="" style="height: 20px;color:blue">
+
+{% if header == "Od_berhils" %}
+
+<a href="{% url 'display1' %}" class="btn btn-primary" role="button">Afficher les employés</a>
+
+
+{% elif header == "Aoulozs" %}
+
+<a href="{% url 'display3' %}" class="btn btn-primary" role="button">Afficher les employés</a>
+
+
+{% elif header == "Od_drisses" %}
+
+<a href="{% url 'display2'  %}" class="btn btn-primary" role="button">Afficher les employés</a>
+
+
+{% endif %}
+
+<table class="table table-hover mt-2">
+          <thead>
+                    <tr>
+                              <th><strong>Designation</strong></th>
+                              <th><strong>Quantité</strong></th>
+                              <th><strong>Prix_unité (dh)</strong></th>
+                              <th><strong>Prix_total (dh)</strong></th>
+
+
+
+                    </tr>
+          </thead>
+          <tbody>
+                    {% for subject in subjects %}
+
+                    <tr>
+                              <td><strong>{{ subject.desg }}</strong></td>
+                              <td><strong style="color: darkblue;">{{ subject.Qté|floatformat:2 }}</strong></td>
+                              <td><strong style="color: darkblue;">{{ subject.pu|floatformat:2}}</strong></td>
+                              <td><strong style="color: darkblue;">{{ subject.pt|floatformat:2 }} dh</strong></td>
+
+                              {% if header == "Od_berhils" %}
+                              <td>
+                                        <a href="{% url 'edit_desktop1' subject.pk %}" class="btn btn-warning"
+                                                  role="button">Modifier</a>
+                                        <a href="{% url 'delete_desktop1' subject.pk %}" class="btn btn-danger"
+                                                  role="button">Supprimer</a>
+                              </td>
+                              {% elif header == "Od_drisses" %}
+                              <td>
+                                        <a href="{% url 'edit_laptop1' subject.pk %}" class="btn btn-warning"
+                                                  role="button">Modifier</a>
+                                        <a href="{% url 'delete_laptop1' subject.pk %}" class="btn btn-danger"
+                                                  role="button">Supprimer</a>
+                              </td>
+
+                              {% else %}
+                              <td>
+                                        <a href="{% url 'edit_mobile1' subject.pk %}" class="btn btn-warning"
+                                                  role="button">Modifier</a>
+                                        <a href="{% url 'delete_mobile1' subject.pk %}" class="btn btn-danger"
+                                                  role="button">Supprimer</a>
+                              </td>
+                              {% endif %}
+                    </tr>
+                    {% endfor %}
+                    
+          </tbody>
+</table>
+
+</div>
+
+{% endblock %}

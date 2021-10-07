@@ -1,0 +1,42 @@
+{% load static %}
+<link href="navbar-top-fixed.css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-md navbar-danger fixed-top bg-light">
+          <div class="container-fluid">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                  <a class="nav-link active " aria-current="page" href="{% url 'home' %}"><img src="{% static 'img/acceuil.png' %}  ">Home</a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link active " href="/admin"><img src=" {% static 'img/chef.png' %}  ">Admin</a>         
+                </li>
+        
+                <li class="nav-item">
+        
+                  <a class="nav-link active " href="{% url 'indax' %}"><img src="{% static 'img/video.png' %}  ">Videos</a>
+                </li>
+                
+                
+        
+                
+                
+        
+              </ul>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+        {% if user.is_authenticated %}       
+        <span><h4 class="nav-link"><strong><img src="">Salut  {{user.username}}</strong></h4></span>
+        <li><a href="{% url 'logout' %}" class="btn btn-info me-5 background-color-blue">Déconnexion</a>
+        </li>
+        {% endif %} 
+      <form class="d-flex" action="">
+        <input class="form-control me-2" type="search" placeholder="recherche" aria-label="Search" name="article">
+        <button class="btn btn-primary" type="submit">Chercher</button>
+      </form>
+    </div>
+  </div>
+</nav>

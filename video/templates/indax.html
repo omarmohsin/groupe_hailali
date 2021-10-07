@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block body%}
+
+<hr>
+<div class="container">
+    <div class="row">
+        <hr class="" style="width:2080px;height: 100px;">
+
+        <div class="title">{{title}}</div>
+        <div class="col-md-12 mt-5">
+            <a href="{% url 'ajouter-video'%}" class="btn btn-warning "><strong>Ajouter une video</strong></a> 
+        </div>
+        
+        {% for video in list_videos %}
+        <div class="col-12 col-md-6 mt-5  col-lg-3 col-xl-3">
+            <div class="card" style="width: 280px;height: 420px;background-color: rgb(23, 167, 167);">
+                <h4 class="card-title text-center mt-2"><a href="{% url 'detial' video.id %}">{{video.caption}}</a></h4>
+                <a href="{% url 'detial' video.id %}">
+                <video class="embed-responsive embed-responsive-16by9"  style="width: 275px;height: 280px">
+                    <source src="{{video.video.url}}" type="video/mp4"/>
+                </video>
+                </a> 
+                <div class="card-body">
+                    
+                    <p class="card-text"><strong>{{video.description|truncatewords:5}}</strong></p>
+                    <p class="card-text"><strong>Publié il y a {{video.created_at|timesince}}</strong></p>
+                </div>
+            </div>
+            <tr>
+                
+
+            </tr>
+        </div>
+    
+    {% endfor %}
+</div>
+{% endblock %}
